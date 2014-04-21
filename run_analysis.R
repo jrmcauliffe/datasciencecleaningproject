@@ -70,9 +70,3 @@ write.table(maketidy(combined), "tidy.txt", row.names = FALSE)
 tidytest <- read.table("tidy.txt", header = TRUE)
 
 View(tidytest)
-
-
-
-
-
-
