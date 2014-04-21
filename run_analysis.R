@@ -1,3 +1,5 @@
+library(reshape)
+
 ## root directory that zip archive unpacks into
 datadirectoryroot <- "UCI HAR Dataset"
 
@@ -39,7 +41,7 @@ allobservations <- do.call("rbind", lapply(paste(datadirectoryroot,"/",sets,"/X_
 names(allobservations) <- featurelabels
 
 ## Get the subset require for our data (mean and standard deviation columns)
-requiredcolumns <-  grep("(std|mean)\\(\\)$", names(allobservations))
+requiredcolumns <-  grep("(std|mean)\\(\\)", names(allobservations))
 requiredobservations <- allobservations[, requiredcolumns]
 
 ## Name subjexts and activity vectors
@@ -53,5 +55,18 @@ activity <- sapply(activity[,1], function(x) activitylabels[activitylabels$id==x
 combined = cbind(subjects, activity, requiredobservations)
 
 ## Write the new dataframe out to disk
-write.table(combined, "combined.csv", row.names = FALSE)
+write.table(combined, "combined.txt", row.names = FALSE)
+
+## Write the tidy average summary dataset (part 5 of assignment)
+write.table(maketidy(combined), "tidy.txt", row.names = FALSE)
+
+## Creates a tidy dataset averaging observations for each subject/activity pair
+maketidy <- function(data) {
+  mdata <- melt(data, id=c("subject", "activity"))
+  cast(mdata, subject + activity ~ variable, mean)
+}
+
+
+
+
 
