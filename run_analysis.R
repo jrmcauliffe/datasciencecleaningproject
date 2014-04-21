@@ -40,7 +40,8 @@ allobservations <- do.call("rbind", lapply(paste(datadirectoryroot,"/",sets,"/X_
 ## Apply the feature labels to our feature data
 names(allobservations) <- featurelabels
 
-## Get the subset require for our data (mean and standard deviation columns)
+## Get the subset required for our data
+## (all mean and standard deviation columns)
 requiredcolumns <-  grep("(std|mean)\\(\\)", names(allobservations))
 requiredobservations <- allobservations[, requiredcolumns]
 
@@ -66,7 +67,7 @@ maketidy <- function(data) {
 ## Write the tidy average summary dataset (part 5 of assignment)
 write.table(maketidy(combined), "tidy.txt", row.names = FALSE)
 
-## Final test to make sure the tidy dataset loads ok
+## Final test to make sure the saved tidy dataset loads ok
 tidytest <- read.table("tidy.txt", header = TRUE)
 
 View(tidytest)
