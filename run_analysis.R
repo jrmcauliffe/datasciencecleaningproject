@@ -31,9 +31,9 @@ featurelabels <- read.table(featurelabelsfilepath)[,2]
 
 sets <- c("train", "test")
 
-subjects = do.call("rbind", lapply(paste(datadirectoryroot,"/",sets,"/subject_",sets,".txt", sep=""), read.table))
+subjects <- do.call("rbind", lapply(paste(datadirectoryroot,"/",sets,"/subject_",sets,".txt", sep=""), read.table))
 activity <- do.call("rbind", lapply(paste(datadirectoryroot,"/",sets,"/y_",sets,".txt", sep=""), read.table))
-allobservations <- do.call("rbind", lapply(paste(datadirectoryroot,"/",sets,"/X_",sets,".txt", sep=""), read.table, col.names=featurelabels))
+allobservations <- do.call("rbind", lapply(paste(datadirectoryroot,"/",sets,"/X_",sets,".txt", sep=""), read.table))
 
 ## Apply the feature labels to our feature data
 names(allobservations) <- featurelabels
