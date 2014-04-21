@@ -29,7 +29,7 @@ featurelabels <- read.table(featurelabelsfilepath)[,2]
 
 ## Load the subject, activity and observation data into pairs of dataframes
 ## (test, train). The two set of filepaths are calculated using the sets vector.
-## These pairs are then row bounnd togther for combined data.
+## These pairs are then row bound togther for combined data.
 
 sets <- c("train", "test")
 
