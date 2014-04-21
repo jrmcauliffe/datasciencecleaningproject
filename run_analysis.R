@@ -57,6 +57,12 @@ combined = cbind(subjects, activity, requiredobservations)
 ## Write the new dataframe out to disk
 write.table(combined, "combined.txt", row.names = FALSE)
 
+## Creates a tidy dataset averaging observations for each subject/activity pair
+maketidy <- function(data) {
+  mdata <- melt(data, id=c("subject", "activity"))
+  cast(mdata, subject + activity ~ variable, mean)
+}
+
 ## Write the tidy average summary dataset (part 5 of assignment)
 write.table(maketidy(combined), "tidy.txt", row.names = FALSE)
 
@@ -65,11 +71,7 @@ tidytest <- read.table("tidy.txt", header = TRUE)
 
 View(tidytest)
 
-## Creates a tidy dataset averaging observations for each subject/activity pair
-maketidy <- function(data) {
-  mdata <- melt(data, id=c("subject", "activity"))
-  cast(mdata, subject + activity ~ variable, mean)
-}
+
 
 
 
