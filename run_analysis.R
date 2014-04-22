@@ -37,6 +37,9 @@ subjects <- do.call("rbind", lapply(paste(datadirectoryroot,"/",sets,"/subject_"
 activity <- do.call("rbind", lapply(paste(datadirectoryroot,"/",sets,"/y_",sets,".txt", sep=""), read.table))
 allobservations <- do.call("rbind", lapply(paste(datadirectoryroot,"/",sets,"/X_",sets,".txt", sep=""), read.table))
 
+## Assign correct activity name to activity id
+activity <- sapply(activity[,1], function(x) activitylabels[activitylabels$id==x,2])
+
 ## Apply the feature labels to our feature data
 names(allobservations) <- featurelabels
 
@@ -48,9 +51,6 @@ requiredobservations <- allobservations[, requiredcolumns]
 ## Name subjexts and activity vectors
 names(subjects) <- "subject"
 names(activity) <- "activity"
-
-## Assign correct activity name to activity id
-activity <- sapply(activity[,1], function(x) activitylabels[activitylabels$id==x,2])
 
 ## Column bind the subjects, activity and observations to create the completed dataset
 combined = cbind(subjects, activity, requiredobservations)
