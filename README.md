@@ -2,7 +2,7 @@
 
 ### 1. Introduction
 
-The purpose of this assignment is to take an existing dataset and produce an R script to merge all of the relevant component parts into a master data set. From this data, another subset of data is to be produced which adheres to tidy data princples. The assignment goals are stated as
+The purpose of this assignment is to take an existing [dataset](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) and produce an R script to merge all of the relevant component parts into a master data set. From this data, another subset of data is to be produced which adheres to tidy data princples. The assignment goals are stated as
 
 > Create one R script called run_analysis.R that does the following. 
 
@@ -37,7 +37,7 @@ The script run_analysis.R is intended to be run standalone in the current workin
 4. Load and merge the subject, activity and observation data from test and train subsets (Part 1 of requirements).
 5. Add the activity labels from step 2 to the activity data  (Part 3 of requirements).
 6. Add the feature labels to our feature data (Part 4 of requirements).
-7. Find the subset of our feature data to match our initial requirement, those features that are mean or standard deviations of measurements Part 2 of requirements). 
+7. Find the subset of our feature data to match our initial requirement, those features that are mean or standard deviations of measurements (Part 2 of requirements). 
 8. Join the subject, activity and feature data into a single dataset and save to disk (combined.txt).
 9. Melt and recast the data to give the average of each feature for every combination of subject and activity (Part 5 of requirements). 
 10. Save this tidy dataset to disk (tidy.txt).
@@ -46,6 +46,6 @@ Each of these steps is documented in the script itself.
 
 ### 4. Notes
 
-* Part 2 of the requirements was taken to mean all variables that contain either std() or mean(), including the component vector observations
-* Assuming Part 4 of the requirements should read 'Appropriately labels the data set with descriptive *feature* names'
+* Part 2 of the requirements was taken to mean all variables that contain either std() or mean() in the feature name, including the component vector observations.
+* It is assumed Part 4 of the requirements should read 'Appropriately labels the data set with descriptive *feature* names'.
 
